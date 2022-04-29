@@ -80,10 +80,10 @@ app.post("/login", async (req, res) => {
         );
         res.json({ token });
       } else {
-        res.status(500).json({error:"Password is wrong"});
+        res.status(401).json({error:"Password is wrong"});
       }
     } else {
-      res.status(401).json({error:"Enter the registered e-mail"});
+      res.status(404).json({error:"Enter the registered e-mail"});
     }
   } catch (error) {
     res.status(500).json(error);
