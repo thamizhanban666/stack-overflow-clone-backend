@@ -75,7 +75,7 @@ app.post("/login", async (req, res) => {
       let compare = bcrypt.compareSync(req.body.password, user.password);
       if (compare) {
         let token = jwt.sign(
-          { name: user.username, email: user.email },
+          { name: user.name, email: user.email },
           "anySecretKeyCanBeHere"
         );
         res.json({ token });
