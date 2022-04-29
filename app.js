@@ -21,6 +21,7 @@ app.get("/test", (req, res) => {
 function authenticate(req, res, next) {
   if (req.headers.authorization) {
     let decode = jwt.verify(req.headers.authorization, "anySecretKeyCanBeHere");
+    console.log(decode);
     if (decode) {
       next();
     } else {
@@ -76,7 +77,8 @@ app.post("/login", async (req, res) => {
       if (compare) {
         let token = jwt.sign(
           { name: user.name, email: user.email },
-          "anySecretKeyCanBeHere"
+          "anySecretKeyCanBeHere",
+          { expiresIn: '1h' }
         );
         res.json({ token });
       } else {
