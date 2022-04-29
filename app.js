@@ -78,7 +78,7 @@ app.post("/login", async (req, res) => {
         let token = jwt.sign(
           { name: user.name, email: user.email },
           "anySecretKeyCanBeHere",
-          { expiresIn: '1h' }
+          { expiresIn: '10' }
         );
         res.json({ token });
       } else {
